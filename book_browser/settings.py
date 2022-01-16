@@ -38,8 +38,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_filters',
+    'bootstrapform',
     'books_app',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+}
+
+DATE_INPUT_FORMATS = [
+    '%Y-%m-%d', '%Y', '%Y-%m',
+]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,9 +1,11 @@
 from django import forms
 from django.forms import ModelForm
+from book_browser import settings
 from .models import Book
 
 
 class BookForm(ModelForm):
+    #date_of_publishing = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
     class Meta:
         model = Book
         fields = ("title", "authors", "publishedDate", "ISBN", "pageCount", "thumbnail", "language")

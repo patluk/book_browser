@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
+from .models import Book
 
 urlpatterns = [
     path('', views.home, name="home"),
@@ -9,4 +10,5 @@ urlpatterns = [
     path('book_search', views.search_book, name="book-search"),
     path('book_update/<book_id>', views.update_book, name="book-update"),
     path('book_delete/<book_id>', views.delete_book, name="book-delete"),
+    re_path(r'^book_filter/$', views.book_filter, name="book-filter"),
 ]
