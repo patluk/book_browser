@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <center>
+    <h1>Book details</h1>
+    </br>
+    <h5>Title: {{ book }}</h5>
+    <h5>Author(s): {{ book.authors }}</h5>
+    <h5>Date of publishing: {{ book.publishedDate }}</h5>
+    <h5>ISBN number: {{ book.ISBN }}</h5>
+    <h5>Page count: {{ book.pageCount }}</h5>
+    <h5>Thumbnail:</h5>
+    <a href="{{ book.thumbnail }}">
+         <img alt="Thumbnail" src="{{ book.thumbnail }}"></a>
+    <h5>Language: {{ book.language }}</h5>
+    </br>
+    <a href="{% url 'book-update' book.id %}" class="btn btn-primary">Update</a>
+
+
+  </center>
+{% endblock %}

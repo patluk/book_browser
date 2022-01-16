@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Update book info</h1>
+    <br/>
+    <form action="" method=POST>
+      {% csrf_token %}
+      {{ form.as_p }}
+      {% if submitted %}
+        Book updated successfully
+      <br/>
+      {% endif %}
+      <input type="submit" value="Update" class="btn btn-primary">
+    </form>
+{% endblock %}
