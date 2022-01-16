@@ -23,8 +23,11 @@
         </p>
       </div>
       <div class="card-footer">
-        <a href="{% url 'book-detail' book.id %}" class="btn btn-primary">Details</a>
-        <a href="{% url 'book-update' book.id %}" class="btn btn-secondary">Update</a>
+        <div class="d-flex">
+          <div class="p-2"><a href="{% url 'book-detail' book.id %}" class="btn btn-primary">Details</a></div>
+          <div class="p-2"><a href="{% url 'book-update' book.id %}" class="btn btn-primary">Update</a></div>
+          <div class="ml-auto p-2"><a href="{% url 'book-delete' book.id %}" class="btn btn-danger">Delete</a></div>
+        </div>
       </div>
     </div>
     <br/>

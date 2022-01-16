@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <center>
+<center xmlns="http://www.w3.org/1999/html">
     <h1>Book details</h1>
     </br>
     <h5>Title: {{ book }}</h5>
@@ -14,7 +14,8 @@
          <img alt="Thumbnail" src="{{ book.thumbnail }}"></a>
     <h5>Language: {{ book.language }}</h5>
     </br>
-    <a href="{% url 'book-update' book.id %}" class="btn btn-primary">Update</a>
+    <a href="{% url 'book-update' book.id %}" class="btn btn-primary">Update</a></br></br>
+    <a href="{% url 'book-delete' book.id %}" class="btn btn-danger">Delete</a>
 
 
   </center>
