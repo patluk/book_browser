@@ -2,4 +2,5 @@ django
 djangorestframework
 django-filter
 django-bootstrap-form
-
+gunicorn
+django-heroku
