@@ -1,4 +1,4 @@
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from . import views
 from .models import Book
 
@@ -11,4 +11,7 @@ urlpatterns = [
     path('book_update/<book_id>', views.update_book, name="book-update"),
     path('book_delete/<book_id>', views.delete_book, name="book-delete"),
     re_path(r'^book_filter/$', views.book_filter, name="book-filter"),
+
+    #REST FRAMEWORK URLS
+    path('api/', include('books_app.api.urls', 'books-api')),
 ]
