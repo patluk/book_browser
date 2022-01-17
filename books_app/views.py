@@ -64,3 +64,29 @@ def book_filter(request):
     f = BookFilter(request.GET, queryset=books)
     return render(request, 'book_filter.html', {'filter': f})
 
+
+def get_books(request):
+    book_dict = {}
+    books = []
+    if 'title' in request.GET:
+        title = request.GET['title']
+        url = 'https://www.googleapis.com/books/v1/volumes?q = %s' % title
+        response = requests.get(url)
+        data = response.json()
+        fetched_books = data['items']
+
+        for i in fetched_books:
+            book_dict = {
+                'title': book['volumeInfo']['title'],
+                'image': book['volumeInfo']['imageLinks']['thumbnail'] if 'imageLinks' in book['volumeInfo'] else "",
+                'authors': ", ".join(book['volumeInfo']['authors']) if 'authors' in book['volumeInfo'] else "",
+                'publisher': book['volumeInfo']['publisher'] if 'publisher' in book['volumeInfo'] else "",
+                'info': book['volumeInfo']['infoLink'],
+                'popularity': book['volumeInfo']['ratingsCount'] if 'ratingsCount' in book['volumeInfo'] else 0
+            }
+            books.append(book_dict)
+
+            #book_data.save()
+            #book_list = Book.objects.all().order_by('-id')
+
+    return render(request, 'google_books.html', {"book_list": book_list})
