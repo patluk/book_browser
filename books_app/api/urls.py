@@ -6,5 +6,5 @@ app_name = 'books_app'
 urlpatterns = [
     # path('all/', api_book_list, name="all"),
     # path('<slug>/', api_detail_book_view, name="detail"),
-    path('all/', ApiBooksListView.as_view(), name="all"),
+    path('', ApiBooksListView.as_view(), name="all"),
 ]
