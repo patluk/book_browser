@@ -1,7 +1,7 @@
 import requests
 from django.shortcuts import render, redirect
 from .models import Book
-from .forms import BookForm
+from .forms import BookForm, BookFormLabels
 from django.http import HttpResponseRedirect
 from .filters import BookFilter
 
@@ -48,7 +48,7 @@ def search_book(request):
 
 def update_book(request, book_id):
     book = Book.objects.get(pk=book_id)
-    form = BookForm(request.POST or None, instance=book)
+    form = BookFormLabels(request.POST or None, instance=book)
     if form.is_valid():
         form.save()
         return redirect('book-detail', book_id)

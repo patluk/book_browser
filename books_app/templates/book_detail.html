@@ -1,22 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<center xmlns="http://www.w3.org/1999/html">
-    <h1>Book details</h1>
-    </br>
-    <h5>Title: {{ book }}</h5>
-    <h5>Author(s): {{ book.authors }}</h5>
-    <h5>Date of publishing: {{ book.publishedDate }}</h5>
-    <h5>ISBN number: {{ book.ISBN }}</h5>
-    <h5>Page count: {{ book.pageCount }}</h5>
-    <h5>Thumbnail:</h5>
-    <a href="{{ book.thumbnail }}">
-         <img alt="Thumbnail" src="{{ book.thumbnail }}"></a>
-    <h5>Language: {{ book.language }}</h5>
-    </br>
-    <a href="{% url 'book-update' book.id %}" class="btn btn-primary">Update</a></br></br>
-    <a href="{% url 'book-delete' book.id %}" class="btn btn-danger">Delete</a>
 
+<div class="card">
+      <h3 class="card-header">
+        Book details
+      </h3>
+      <div class="card-body">
+        <p class="card-text">
+          <h4><strong>Title:</strong> {{ book.title }}</h4>
+          <h4><strong>Author(s):</strong> {{ book.authors }}</h4>
+          <h4><strong>Date of publishing:</strong> {{ book.publishedDate }}</h4>
+          <h4><strong>ISBN number:</strong> {{ book.ISBN }}</h4>
+          <h4><strong>Page count:</strong> {{ book.pageCount }}</h4>
+          <h4><strong>Thumbnail:</strong></h4>
+          <a href="{{ book.thumbnail }}">
+            <img alt="Thumbnail" src="{{ book.thumbnail }}"></a>
 
-  </center>
+          <br/><h4><strong>Language:</strong> {{ book.language }}</h4>
+
+        </p>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex">
+          <div class="p-2"><a href="{% url 'book-update' book.id %}" class="btn btn-primary">Update</a></div>
+          <div class="ml-auto p-2"><a href="{% url 'book-delete' book.id %}" class="btn btn-danger">Delete</a></div>
+        </div>
+      </div>
+    </div>
+
 {% endblock %}

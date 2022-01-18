@@ -6,9 +6,9 @@
     <form action="" method=POST>
       {% csrf_token %}
       {{ form.as_p }}
+      <br/>
       {% if submitted %}
         Book updated successfully
-      <br/>
       {% endif %}
       <input type="submit" value="Update" class="btn btn-primary">
     </form>
