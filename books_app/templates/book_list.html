@@ -1,35 +1,30 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h1>List of books</h1>
+<br />
 
-{% block content %}
-  <h1>List of books</h1>
-  <br/>
-
-  {% for book in book_list %}
-    <div class="card">
-      <h3 class="card-header">
+{% for book in book_list %}
+<div class="card">
+    <h3 class="card-header">
         {{ book }}
-      </h3>
-      <div class="card-body">
+    </h3>
+    <div class="card-body">
         <p class="card-text">
-          <strong>Author(s):</strong> {{ book.authors }}<br/>
-          <strong>Date of publishing:</strong> {{ book.publishedDate }}<br/>
-          <strong>ISBN number:</strong> {{ book.ISBN }}<br/>
-          <strong>Page count:</strong> {{ book.pageCount }}<br/>
-          <strong>Thumbnail:</strong><br/>
-          <a href="{{ book.thumbnail }}">
-            <img alt="Thumbnail" src="{{ book.thumbnail }}"></a><br/>
-          <strong>Language:</strong> {{ book.language }}<br/>
-
+            <strong>Author(s):</strong> {{ book.authors }}<br />
+            <strong>Date of publishing:</strong> {{ book.publishedDate }}<br />
+            <strong>ISBN number:</strong> {{ book.ISBN }}<br />
+            <strong>Page count:</strong> {{ book.pageCount }}<br />
+            <strong>Thumbnail:</strong><br />
+            <a href="{{ book.thumbnail }}"> <img alt="Thumbnail" src="{{ book.thumbnail }}" /></a><br />
+            <strong>Language:</strong> {{ book.language }}<br />
         </p>
-      </div>
-      <div class="card-footer">
-        <div class="d-flex">
-          <div class="p-2"><a href="{% url 'book-detail' book.id %}" class="btn btn-primary">Details</a></div>
-          <div class="p-2"><a href="{% url 'book-update' book.id %}" class="btn btn-primary">Update</a></div>
-          <div class="ml-auto p-2"><a href="{% url 'book-delete' book.id %}" class="btn btn-danger">Delete</a></div>
-        </div>
-      </div>
     </div>
-    <br/>
-  {% endfor %}
-{% endblock %}
+    <div class="card-footer">
+        <div class="d-flex">
+            <div class="p-2"><a href="{% url 'book-detail' book.id %}" class="btn btn-primary">Details</a></div>
+            <div class="p-2"><a href="{% url 'book-update' book.id %}" class="btn btn-primary">Update</a></div>
+            <div class="ml-auto p-2"><a href="{% url 'book-delete' book.id %}" class="btn btn-danger">Delete</a></div>
+        </div>
+    </div>
+</div>
+<br />
+{% endfor %} {% endblock %}

@@ -1,42 +1,35 @@
-{% extends 'base.html' %}
-{% load bootstrap %}
+{% extends 'base.html' %} {% load bootstrap %} {% block content %}
 
-{% block content %}
-
-  <h1>Advanced search options:</h1>
-  </br>
-  <form  action="" method="get">
+<h1>Advanced search options:</h1>
+<br />
+<form action="" method="get">
     {{ filter.form|bootstrap }}
-    <input type="submit" value="Search" class="btn btn-primary">
-
-  </form>
-  </br>
-  {% for book in filter.qs %}
-     <div class="card">
-      <h3 class="card-header">
+    <input type="submit" value="Search" class="btn btn-primary" />
+</form>
+<br />
+{% for book in filter.qs %}
+<div class="card">
+    <h3 class="card-header">
         {{ book }}
-      </h3>
-      <div class="card-body">
+    </h3>
+    <div class="card-body">
         <p class="card-text">
-          <strong>Author(s):</strong> {{ book.authors }}<br/>
-          <strong>Date of publishing:</strong> {{ book.publishedDate }}<br/>
-          <strong>ISBN number:</strong> {{ book.ISBN }}<br/>
-          <strong>Page count:</strong> {{ book.pageCount }}<br/>
-          <strong>Thumbnail:</strong><br/>
-          <a href="{{ book.thumbnail }}">
-            <img alt="Thumbnail" src="{{ book.thumbnail }}"></a><br/>
-          <strong>Language:</strong> {{ book.language }}<br/>
-
+            <strong>Author(s):</strong> {{ book.authors }}<br />
+            <strong>Date of publishing:</strong> {{ book.publishedDate }}<br />
+            <strong>ISBN number:</strong> {{ book.ISBN }}<br />
+            <strong>Page count:</strong> {{ book.pageCount }}<br />
+            <strong>Thumbnail:</strong><br />
+            <a href="{{ book.thumbnail }}"> <img alt="Thumbnail" src="{{ book.thumbnail }}" /></a><br />
+            <strong>Language:</strong> {{ book.language }}<br />
         </p>
-      </div>
-      <div class="card-footer">
-        <div class="d-flex">
-          <div class="p-2"><a href="{% url 'book-detail' book.id %}" class="btn btn-primary">Details</a></div>
-          <div class="p-2"><a href="{% url 'book-update' book.id %}" class="btn btn-primary">Update</a></div>
-          <div class="ml-auto p-2"><a href="{% url 'book-delete' book.id %}" class="btn btn-danger">Delete</a></div>
-        </div>
-      </div>
     </div>
-  {% endfor %}
 
-{% endblock %}
+    <div class="card-footer">
+        <div class="d-flex">
+            <div class="p-2"><a href="{% url 'book-detail' book.id %}" class="btn btn-primary">Details</a></div>
+            <div class="p-2"><a href="{% url 'book-update' book.id %}" class="btn btn-primary">Update</a></div>
+            <div class="ml-auto p-2"><a href="{% url 'book-delete' book.id %}" class="btn btn-danger">Delete</a></div>
+        </div>
+    </div>
+</div>
+{% endfor %} {% endblock %}
